@@ -6,7 +6,7 @@
 {%- endif -%}
 
 {% assign on_sale = false %}
-{% if product.compare_at_price > bold_price %}
+{% if bold_compare_at_price > bold_price %}
   {% assign on_sale = true %}
 {% endif %}
 
@@ -34,7 +34,7 @@
         {% endif %}
         {% if on_sale %}
         <span class="compare-at">
-          <span class="money">{{ product.compare_at_price | money }}</span>
+          <span class="money">{{ bold_compare_at_price | money }}</span>
         </span>
         {% endif %}
         {% if product.metafields.spr.reviews %}
