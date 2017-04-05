@@ -43,16 +43,16 @@
       To show the price, let's pull what was already done on the product page,
       but change product to item.
     {% endcomment %}
-    {% if item.compare_at_price > item.price %}
+    {% if bold_compare_at_price > bold_price %}
       <span class="on-sale h5 money" itemprop="price">
-        {{ item.price | money }}
+        {{ bold_price | money }}
       </span>
       <s>
-        <span class="money">{{ item.compare_at_price_max | money }}</span>
+        <span class="money">{{ bold_compare_at_price_max | money }}</span>
       </s>
     {% else %}
       <h5 itemprop="price">
-        <span class="money">{{ item.price | money }}</span>
+        <span class="money">{{ bold_price | money }}</span>
       </h5>
     {% endif %}
 
