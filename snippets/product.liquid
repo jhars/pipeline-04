@@ -22,7 +22,7 @@
       {% include 'breadcrumb' %}
     {% endif %}
 
-    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign current_variant = bold_selected_or_first_available_variant %}
 
     {%- assign product_image_width = 'large--two-thirds' -%}
     {%- assign product_description_width = 'large--one-third' -%}
@@ -59,7 +59,7 @@
             <span class="money"><span id="ProductPrice-{{ section.id }}">{{ current_variant.price | money }}</span></span>
 
               <p class="small compare-at em" id="ComparePriceWrapper-{{ section.id }}" {% unless current_variant.compare_at_price > current_variant.price %}style="display: none"{% endunless %}>
-              <span class="money"><span id="ComparePrice-{{ section.id }}">{{ product.compare_at_price_max | money }}</span></span>
+              <span class="money"><span id="ComparePrice-{{ section.id }}">{{ bold_compare_at_price_max | money }}</span></span>
               </p>
           </h5>
 
@@ -97,7 +97,7 @@
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
           <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-          <meta itemprop="price" content="{{ product.selected_or_first_available_variant.price | divided_by: 100 }}">
+          <meta itemprop="price" content="{{ bold_selected_or_first_available_variant.price | divided_by: 100 }}">
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
           <form action="{{ form_action }}" method="{{form_method}}" enctype="multipart/form-data" id="{{form_id}}" data-section="{{ section.id }}" class="product-form-{{ section.id }} {{form_class}}">
@@ -105,7 +105,7 @@
               <input type="hidden" name="customer_id" value="{{customer.id}}">
             {% endif %}
 
-            {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+            {% unless product.options.size == 1 and bold_variants[0].title == 'Default Title' %}
               {% for option in product.options_with_values %}
                 <div class="selector-wrapper js">
                   <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
@@ -133,7 +133,7 @@
                 {% include 'bold-hidden-variants' with variant, bold_loop: 'loop' %}
                 
                 {% if variant.available %}
-                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                  <option {% if variant == bold_selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
                     {{ variant.title }}
                   </option>
                 {% else %}

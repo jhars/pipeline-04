@@ -10,7 +10,7 @@
   Check if the product is on sale and set a variable to be used below.
 {% endcomment %}
 {% assign on_sale = false %}
-{% if product.compare_at_price > product.price %}
+{% if bold_compare_at_price > bold_price %}
   {% assign on_sale = true %}
 {% endif %}
 
@@ -49,14 +49,14 @@
       <p class="h3--body"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></p>
       <p class="{% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}">
         <span class="price">
-          {% if product.price_varies %}{{ 'products.general.from' | t }} {% endif %}
-          <span class="money">{{ product.price | money }}</span>
+          {% if bold_price_varies %}{{ 'products.general.from' | t }} {% endif %}
+          <span class="money">{{ bold_price | money }}</span>
         </span>
         {% if sold_out %}
         <br><strong>{{ 'products.product.sold_out' | t }}</strong>
         {% endif %}
         {% if on_sale %}
-        <br><span class="compare-at"><span class="money">{{ product.compare_at_price | money }}</span></span>
+        <br><span class="compare-at"><span class="money">{{ bold_compare_at_price | money }}</span></span>
         {% endif %}
         {% if product.metafields.spr.reviews %}
           <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
