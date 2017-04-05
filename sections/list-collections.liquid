@@ -44,6 +44,10 @@
         </div>
         <div class="grid-uniform{% if settings.image_autoheight_enable %} image_autoheight_enable{% endif %}">
           {% for product in collection.products limit:product_limit %}
+
+            <!-- JH -->
+            {% include 'bold-product' with product, hide_action: 'skip' %}  
+
             {% include 'product-grid-item' %}
           {% endfor %}
         </div>
