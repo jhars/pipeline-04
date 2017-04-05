@@ -42,6 +42,10 @@
             {% if grid_results == false %}
 
               {% for item in search.results %}
+
+                <!-- JH -->
+                {% include 'bold-product' with item, hide_action: 'skip' %}
+                
                 {% include 'search-result' %}
               {% endfor %}
 
@@ -49,6 +53,10 @@
 
               <div class="grid-uniform">
                 {% for item in search.results %}
+                  
+                  <!-- JH -->
+                  {% include 'bold-product' with item, hide_action: 'skip' %}
+
                   {% include 'search-result-grid' %}
                 {% endfor %}
               </div>
