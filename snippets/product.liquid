@@ -246,7 +246,11 @@
 {% endif %}
 
 <script type="application/json" id="ProductJson-{{ section.id }}">
-  {{ product | json }}
+  // {{ product | json }}
+  
+  // JH
+  bold_product_json[{{ product.id }}]
+
 </script>
 
 {% if product.template_suffix contains "charge-rabbit" %}
